@@ -21,10 +21,12 @@ class App extends Component {
   showUser = (event) => {
     console.log(this.state.people[event.target.value])
 
+
+
     this.setState({
       selectedPerson: this.state.people[event.target.value]
 
-    })
+    }, () => console.log(this.state.selectedPerson))
   }
 
   editUser = (event) => {
@@ -38,11 +40,35 @@ class App extends Component {
 
   handleSubmit = (userData) => {
     let newPeople = this.state.people
+    console.log(newPeople)
+
+    var imgUrl = userData.img
+
+    var medUrl = userData.img.replace(/portraits/i, 'portraits/med');
+    var thumbUrl = userData.img.replace(/portraits/i, 'portraits/thumb');
+
+    console.log(medUrl)
+
+        const userDataa = {
+              gender: userData.gender,
+              location: { street: userData.street,
+                          city: userData.city,
+                          state: userData.state,
+                          postcode: userData.postcode },
+              name: { title: userData.title,
+                    first: userData.firstName,
+                    last: userData.lastName},
+              picture: {
+                large: userData.img,
+                medium: userData.img.replace(/portraits/i, 'portraits/med'),
+                thumbnail: userData.img.replace(/portraits/i, 'portraits/thumb')
+              }
+            }
 
     this.setState({
       people: newPeople.map((user) => {
         if (user === this.state.selectedPerson){
-          return (userData)
+          return (userDataa)
         } else {
           return user
         }
@@ -51,25 +77,6 @@ class App extends Component {
 
   })
 }
-
-// //for submitting form data
-//
-//   submitForm = (formData) => {
-//     newPeople = this.state.people
-//
-//     this.setState({
-//       people: newPeople.map((user) => {
-//         if(user === userData.selectedPerson) {
-//         return userData.selectedPerson
-//         }
-//         else {
-//           return user
-//         }
-//       }
-//     )
-//   // })
-
-
 
   render() {
     console.log(this.state.people)
@@ -83,7 +90,13 @@ class App extends Component {
         </header>
 
           <div>
-            <UserListContainer users={this.state.people} showUser={this.showUser} displayUser={this.state.selectedPerson} showEdit={this.state.editPerson} editUser={this.editUser} handleSubmit={this.handleSubmit}  />
+            <UserListContainer
+              users={this.state.people}
+              showUser={this.showUser}
+              displayUser={this.state.selectedPerson}
+              showEdit={this.state.editPerson}
+              editUser={this.editUser}
+              handleSubmit={this.handleSubmit}  />
           </div>
 
       </div>

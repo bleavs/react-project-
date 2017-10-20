@@ -7,17 +7,17 @@ class UserListDetail extends React.Component{
 
     this.state = {
       title: props.displayUser.name.title,
-      firstName: this.props.displayUser.name.first,
-      lastName: this.props.displayUser.name.last,
+      firstName: props.displayUser.name.first,
+      lastName: props.displayUser.name.last,
 
-      img: this.props.displayUser.picture.large,
+      img: props.displayUser.picture.large,
 
-      gender: this.props.displayUser.gender,
+      gender: props.displayUser.gender,
 
-      city: this.props.displayUser.location.city,
-      postcode: this.props.displayUser.location.postcode,
-      state: this.props.displayUser.location.state,
-      street: this.props.displayUser.location.street
+      city: props.displayUser.location.city,
+      postcode: props.displayUser.location.postcode,
+      state: props.displayUser.location.state,
+      street: props.displayUser.location.street
 
     }
   }
@@ -32,32 +32,48 @@ class UserListDetail extends React.Component{
   handleChange = (event) => {
 
     let name = event.target.name
+
     this.setState({
       [name]: event.target.value
     }, () => console.log(this.state))
   }
 
+  componentWillReceiveProps(nextProps){
+ this.setState({
+     title: nextProps.displayUser.name.title,
+   firstName: nextProps.displayUser.name.first,
+   lastName: nextProps.displayUser.name.last,
+
+   img: nextProps.displayUser.picture.large,
+
+   gender: nextProps.displayUser.gender,
+
+   city: nextProps.displayUser.location.city,
+   postcode: nextProps.displayUser.location.postcode,
+   state: nextProps.displayUser.location.state,
+   street: nextProps.displayUser.location.street
+ });
+}
+
   render(){
     const editStyle = {float: 'right', display: 'block'};
-
-    if(this.props.displayUser !== null){
 
       if(this.props.showEdit === false){
 
         return (
           <div>
-                <h6> Title: {this.props.displayUser.name.title} </h6>
-                <h6> First Name: {this.props.displayUser.name.first} </h6>
-                <h6> Last Name: {this.props.displayUser.name.last} </h6>
+                <h6> Title: {this.state.title} </h6>
+                <h6> First Name: {this.state.firstName} </h6>
+                <h6> Last Name: {this.state.lastName} </h6>
 
-                <img src={this.props.displayUser.picture.large} />
+                <img src={this.state.img} />
 
-                <h6> Gender: {this.props.displayUser.gender} </h6>
+                <h6> Gender: {this.state.gender} </h6>
 
-                <h6> City: {this.props.displayUser.location.city} </h6>
-                <h6> Postcode: {this.props.displayUser.location.postcode} </h6>
-                <h6> State: {this.props.displayUser.location.state} </h6>
-                <h6> Street: {this.props.displayUser.location.street} </h6>
+                <h6> City: {this.state.city} </h6>
+                <h6> Postcode: {this.state.postcode} </h6>
+                <h6> State: {this.state.state} </h6>
+                <h6> Street: {this.state.street} </h6>
 
                 <button onClick={this.props.editUser}> Edit User</button>
 
@@ -70,50 +86,50 @@ class UserListDetail extends React.Component{
       <div>
           <h6>Edit User</h6>
 
-          <form onSubmit={this.props.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
 
             <label>
-              Title: <input name="title" type="text" value={this.props.displayUser.name.title} onChange={this.handleChange}/>
+              Title: <input name="title" type="text" value={this.state.title} onChange={this.handleChange}/>
             </label>
             <br/>
 
             <label>
-              First Name: <input name="firstName" type="text" value={this.props.displayUser.name.first} onChange={this.handleChange}/>
+              First Name: <input name="firstName" type="text" value={this.state.firstName} onChange={this.handleChange}/>
             </label>
             <br/>
 
             <label>
-              Last Name: <input name="lastName" type="text" value={this.props.displayUser.name.last} onChange={this.handleChange}/>
+              Last Name: <input name="lastName" type="text" value={this.state.lastName} onChange={this.handleChange}/>
             </label>
             <br/>
 
             <label>
-              Gender: <input name="gender" type="text" value={this.props.displayUser.gender} onChange={this.handleChange}/>
+              Gender: <input name="gender" type="text" value={this.state.gender} onChange={this.handleChange}/>
             </label>
             <br/>
 
             <label>
-              City: <input name="city" type="text" value={this.props.displayUser.location.city} onChange={this.handleChange}/>
+              City: <input name="city" type="text" value={this.state.city} onChange={this.handleChange}/>
             </label>
             <br/>
 
             <label>
-              Postcode: <input name="postcode" type="text" value={this.props.displayUser.location.postcode} onChange={this.handleChange}/>
+              Postcode: <input name="postcode" type="text" value={this.state.postcode} onChange={this.handleChange}/>
             </label>
             <br/>
 
             <label>
-              State: <input name="state" type="text" value={this.props.displayUser.location.state} onChange={this.handleChange}/>
+              State: <input name="state" type="text" value={this.state.state} onChange={this.handleChange}/>
             </label>
             <br/>
 
             <label>
-              Street: <input name="street" type="text" value={this.props.displayUser.location.street} onChange={this.handleChange}/>
+              Street: <input name="street" type="text" value={this.state.street} onChange={this.handleChange}/>
             </label>
             <br/>
 
             <label>
-              Picture: <input name="picture" type="text" value={this.props.displayUser.picture.large} onChange={this.handleChange}/>
+              Img: <input name="img" type="text" value={this.state.img} onChange={this.handleChange}/>
             </label>
             <br/>
 
@@ -131,14 +147,11 @@ class UserListDetail extends React.Component{
   </div>
   )
     }
-  }
 
-    else {
-      return <div></div>
-    }
-    }
+
 
   }
+}
 
 
 

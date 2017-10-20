@@ -10,7 +10,15 @@ const UserListContainer = (props) => {
 
   return (
     <div>
-      <UserList users={props.users} showUser={props.showUser} displayUser={props.displayUser} showEdit={props.showEdit} editUser={props.editUser} handleSubmit={props.handleSubmit}  />
+    
+      <UserList
+        users={props.users}
+        showUser={props.showUser}
+        displayUser={props.displayUser}
+        showEdit={props.showEdit}
+        editUser={props.editUser}
+        handleSubmit={props.handleSubmit}  />
+
     </div> )}
 
 export default UserListContainer

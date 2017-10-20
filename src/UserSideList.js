@@ -3,7 +3,6 @@ import React from 'react'
 const UserSideList = (props) => {
 
   console.log(props)
-  console.log(props.users[0].name.first)
   console.log(props.users.map((user, index) => {
     return (user.name.last) }))
 
@@ -24,11 +23,12 @@ const UserSideList = (props) => {
         key={index}
         value={index}
         onClick={props.showUser}>
-        
+
           {user.name.first} {user.name.last}
           </button>
         )}
       )
+
 
     return (
     <div style={divStyle}>
