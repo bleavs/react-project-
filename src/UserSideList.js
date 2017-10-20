@@ -36,7 +36,6 @@ const UserSideList = (props) => {
       {usernames}
     </div>
 
-
     )
 
 

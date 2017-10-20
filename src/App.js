@@ -73,7 +73,8 @@ class App extends Component {
           return user
         }
 
-    })
+    }),
+    selectedPerson: userDataa
 
   })
 }
