@@ -6,7 +6,7 @@ import UserShow from './UserShow'
 class UserListDetail extends React.Component{
 
   render(){
-    debugger
+  
 
     return (
 

@@ -38,6 +38,8 @@ class App extends Component {
     })
   }
 
+
+
   handleSubmit = (userData) => {
     let newPeople = this.state.people
     console.log(newPeople)
@@ -78,6 +80,19 @@ class App extends Component {
 
   })
 }
+
+componentDidMount(){
+
+  fetch("https://randomuser.me/api/?results=20")
+    .then(res => res.json())
+    .then(json => { this.setState({
+      people: json.results
+    })
+  })
+}
+
+
+
 
   render() {
     console.log(this.state.people)
