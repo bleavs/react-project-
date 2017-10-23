@@ -15,7 +15,8 @@ class UserEdit extends React.Component{
       city: this.props.displayUser.location.city,
       postcode: this.props.displayUser.location.postcode,
       state: this.props.displayUser.location.state,
-      street: this.props.displayUser.location.street
+      street: this.props.displayUser.location.street,
+      password: this.props.displayUser.login.password
     }
   }
 
@@ -42,7 +43,8 @@ class UserEdit extends React.Component{
      city: nextProps.displayUser.location.city,
      postcode: nextProps.displayUser.location.postcode,
      state: nextProps.displayUser.location.state,
-     street: nextProps.displayUser.location.street
+     street: nextProps.displayUser.location.street,
+     password: nextProps.displayUser.login.password
    });
  }
 
@@ -81,6 +83,9 @@ class UserEdit extends React.Component{
         </label> <br/>
         <label>
           Img: <input name="img" type="text" value={this.state.img} onChange={this.handleChange}/>
+        </label> <br/>
+        <label>
+          password: <input name="password" type="text" value={this.state.password} onChange={this.handleChange}/>
         </label> <br/>
 
         <input type="submit" value="Submit" /> <br/>

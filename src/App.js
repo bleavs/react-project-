@@ -64,6 +64,9 @@ class App extends Component {
                 large: userData.img,
                 medium: userData.img.replace(/portraits/i, 'portraits/med'),
                 thumbnail: userData.img.replace(/portraits/i, 'portraits/thumb')
+              },
+              login: {
+                password: userData.password
               }
             }
 
@@ -78,8 +81,24 @@ class App extends Component {
     }),
     selectedPerson: userDataa
 
+  }, () => {
+    fetch("http://localhost:3000/users/:id", {
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      method: 'POST',
+      body: JSON.stringify({ password: this.state.selectedPerson.login.password,
+        first: this.state.selectedPerson.name.first,
+      last: this.state.selectedPerson.name.last,
+      city: this.state.selectedPerson.location.city,
+      state: this.state.selectedPerson.location.state
+      })
+    }).then(res => res.json()).then(console.log)
+
   })
+
+
+
 }
+
 
 componentDidMount(){
 
@@ -87,9 +106,24 @@ componentDidMount(){
     .then(res => res.json())
     .then(json => { this.setState({
       people: json.results
+    }, () => {
+      this.state.people.forEach((person) => {
+
+        fetch("http://localhost:3000/users", {
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        method: 'POST',
+        body: JSON.stringify({ password: person.login.password,
+        first: person.name.first,
+      last: person.name.last,
+    city: person.location.city,
+    state: person.location.state
+  })
+      }).then(res => res.json()).then(console.log)
+      })
     })
   })
-}
+      }
+
 
 
 
