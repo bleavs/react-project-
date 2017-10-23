@@ -7,16 +7,16 @@ class UserEdit extends React.Component{
     console.log(props)
 
     this.state = {
-      title: this.props.displayUser.name.title,
-      firstName: this.props.displayUser.name.first,
-      lastName: this.props.displayUser.name.last,
-      img: this.props.displayUser.picture.large,
+      title: this.props.displayUser.title,
+      first: this.props.displayUser.first,
+      last: this.props.displayUser.last,
+      picture: this.props.displayUser.picture,
       gender: this.props.displayUser.gender,
-      city: this.props.displayUser.location.city,
-      postcode: this.props.displayUser.location.postcode,
-      state: this.props.displayUser.location.state,
-      street: this.props.displayUser.location.street,
-      password: this.props.displayUser.login.password
+      city: this.props.displayUser.city,
+      postcode: this.props.displayUser.postcode,
+      state: this.props.displayUser.state,
+      street: this.props.displayUser.street,
+      password: this.props.displayUser.password
     }
   }
 
@@ -35,16 +35,16 @@ class UserEdit extends React.Component{
   componentWillReceiveProps(nextProps){
 
    this.setState({
-     title: nextProps.displayUser.name.title,
-     firstName: nextProps.displayUser.name.first,
-     lastName: nextProps.displayUser.name.last,
-     img: nextProps.displayUser.picture.large,
+     title: nextProps.displayUser.title,
+     first: nextProps.displayUser.first,
+     last: nextProps.displayUser.last,
+     picture: nextProps.displayUser.picture,
      gender: nextProps.displayUser.gender,
-     city: nextProps.displayUser.location.city,
-     postcode: nextProps.displayUser.location.postcode,
-     state: nextProps.displayUser.location.state,
-     street: nextProps.displayUser.location.street,
-     password: nextProps.displayUser.login.password
+     city: nextProps.displayUser.city,
+     postcode: nextProps.displayUser.postcode,
+     state: nextProps.displayUser.state,
+     street: nextProps.displayUser.street,
+     password: nextProps.displayUser.password
    });
  }
 
@@ -61,10 +61,10 @@ class UserEdit extends React.Component{
           Title: <input name="title" type="text" value={this.state.title} onChange={this.handleChange}/>
         </label> <br/>
         <label>
-          First Name: <input name="firstName" type="text" value={this.state.firstName} onChange={this.handleChange}/>
+          First Name: <input name="first" type="text" value={this.state.first} onChange={this.handleChange}/>
         </label> <br/>
         <label>
-          Last Name: <input name="lastName" type="text" value={this.state.lastName} onChange={this.handleChange}/>
+          Last Name: <input name="last" type="text" value={this.state.last} onChange={this.handleChange}/>
         </label> <br/>
         <label>
           Gender: <input name="gender" type="text" value={this.state.gender} onChange={this.handleChange}/>
@@ -82,7 +82,7 @@ class UserEdit extends React.Component{
           Street: <input name="street" type="text" value={this.state.street} onChange={this.handleChange}/>
         </label> <br/>
         <label>
-          Img: <input name="img" type="text" value={this.state.img} onChange={this.handleChange}/>
+          Img: <input name="picture" type="text" value={this.state.picture} onChange={this.handleChange}/>
         </label> <br/>
         <label>
           password: <input name="password" type="text" value={this.state.password} onChange={this.handleChange}/>

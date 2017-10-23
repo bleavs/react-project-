@@ -9,10 +9,6 @@ const UserList = (props) => {
   console.log(props)
   console.log(props.users)
   console.log(props.displayUser)
-  
-
-
-
 
   return (
     <div>

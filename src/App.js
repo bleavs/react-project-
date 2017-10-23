@@ -21,8 +21,6 @@ class App extends Component {
   showUser = (event) => {
     console.log(this.state.people[event.target.value])
 
-
-
     this.setState({
       selectedPerson: this.state.people[event.target.value]
 
@@ -31,101 +29,80 @@ class App extends Component {
 
   editUser = (event) => {
     console.log(event.target.value)
-
     this.setState({
       editPerson: !(this.state.editPerson)
 
     })
   }
 
-
-
-  handleSubmit = (userData) => {
-    let newPeople = this.state.people
-    console.log(newPeople)
-
-    var imgUrl = userData.img
-
-    var medUrl = userData.img.replace(/portraits/i, 'portraits/med');
-    var thumbUrl = userData.img.replace(/portraits/i, 'portraits/thumb');
-
-    console.log(medUrl)
-
-        const userDataa = {
-              gender: userData.gender,
-              location: { street: userData.street,
-                          city: userData.city,
-                          state: userData.state,
-                          postcode: userData.postcode },
-              name: { title: userData.title,
-                    first: userData.firstName,
-                    last: userData.lastName},
-              picture: {
-                large: userData.img,
-                medium: userData.img.replace(/portraits/i, 'portraits/med'),
-                thumbnail: userData.img.replace(/portraits/i, 'portraits/thumb')
-              },
-              login: {
-                password: userData.password
-              }
-            }
-
-    this.setState({
-      people: newPeople.map((user) => {
-        if (user === this.state.selectedPerson){
-          return (userDataa)
-        } else {
-          return user
-        }
-
-    }),
-    selectedPerson: userDataa
-
-  }, () => {
-    fetch("http://localhost:3000/users/:id", {
-      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-      method: 'POST',
-      body: JSON.stringify({ password: this.state.selectedPerson.login.password,
-        first: this.state.selectedPerson.name.first,
-      last: this.state.selectedPerson.name.last,
-      city: this.state.selectedPerson.location.city,
-      state: this.state.selectedPerson.location.state
+componentDidMount(){
+	        fetch("http://localhost:3000/users")
+		.then(res => res.json())
+		.then(json => {
+      this.setState({
+	people: json
       })
-    }).then(res => res.json()).then(console.log)
-
-  })
-
-
-
+    }
+  )
 }
 
 
-componentDidMount(){
+handleSubmit = (userData) => {
+  console.log(userData)
+  console.log(this.state.selectedPerson.id)
+  let id = this.state.selectedPerson.id
 
-  fetch("https://randomuser.me/api/?results=20")
-    .then(res => res.json())
-    .then(json => { this.setState({
-      people: json.results
-    }, () => {
-      this.state.people.forEach((person) => {
+  let newPeople = this.state.people
+  console.log(newPeople)
 
-        fetch("http://localhost:3000/users", {
-        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-        method: 'POST',
-        body: JSON.stringify({ password: person.login.password,
-        first: person.name.first,
-      last: person.name.last,
-    city: person.location.city,
-    state: person.location.state
-  })
-      }).then(res => res.json()).then(console.log)
-      })
-    })
-  })
+
+      const userDataa = {
+            gender: userData.gender,
+            street: userData.street,
+            city: userData.city,
+            state: userData.state,
+            postcode: userData.postcode,
+            title: userData.title,
+            first: userData.first,
+            last: userData.last,
+            picture: userData.picture,
+            password: userData.password
+            }
+
+
+  this.setState({
+    people: newPeople.map((user) => {
+      if (user === this.state.selectedPerson){
+        return (userDataa)
+      } else {
+        return user
       }
 
+  }),
+  selectedPerson: userDataa
 
+}, () => {
+  fetch(`http://localhost:3000/users/${id}`, {
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    method: 'POST',
+    body: JSON.stringify({
+    gender: this.state.selectedPerson.gender,
+    street: this.state.selectedPerson.street,
+    city: this.state.selectedPerson.city,
+    state: this.state.selectedPerson.state,
+    postcode: this.state.selectedPerson.postcode,
+    title: this.state.selectedPerson.title,
+    first: this.state.selectedPerson.first,
+    last: this.state.selectedPerson.last,
+    picture: this.state.selectedPerson.picture,
+    password: this.state.selectedPerson.password
 
+    })
+  }).then(res => res.json()).then(console.log)
+
+})
+
+}
 
 
   render() {

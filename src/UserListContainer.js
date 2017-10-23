@@ -4,13 +4,13 @@ import UserList from './UserList'
 
 const UserListContainer = (props) => {
   console.log(props.users)
-  console.log(props.users[0].name.first)
+  console.log(props.users[0].first)
 
   console.log(props.displayUser)
 
   return (
     <div>
-    
+
       <UserList
         users={props.users}
         showUser={props.showUser}

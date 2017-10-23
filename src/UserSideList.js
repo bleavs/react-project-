@@ -4,7 +4,7 @@ const UserSideList = (props) => {
 
   console.log(props)
   console.log(props.users.map((user, index) => {
-    return (user.name.last) }))
+    return (user.last) }))
 
   const divStyle = {float: 'left'};
   const buttonStyle = {display: 'block'};
@@ -24,7 +24,7 @@ const UserSideList = (props) => {
         value={index}
         onClick={props.showUser}>
 
-          {user.name.first} {user.name.last}
+          {user.first} {user.last}
           </button>
         )}
       )
