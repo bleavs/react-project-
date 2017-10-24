@@ -28,6 +28,8 @@ const UserList = (props) => {
                 displayUser={props.displayUser}
                 showEdit={props.showEdit}
                 editUser={props.editUser}
+                selectedPersonsGroups={props.selectedPersonsGroups}
+
                 handleSubmit={props.handleSubmit}/>
             :
 

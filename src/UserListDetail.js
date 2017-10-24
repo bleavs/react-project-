@@ -6,7 +6,7 @@ import UserShow from './UserShow'
 class UserListDetail extends React.Component{
 
   render(){
-  
+
 
     return (
 
@@ -20,6 +20,7 @@ class UserListDetail extends React.Component{
             displayUser={this.props.displayUser}
             showEdit={this.props.showEdit}
             editUser={this.props.editUser}
+            selectedPersonsGroups={this.props.selectedPersonsGroups}
             handleSubmit={this.props.handleSubmit} />
              :
 

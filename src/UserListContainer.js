@@ -17,7 +17,8 @@ const UserListContainer = (props) => {
         displayUser={props.displayUser}
         showEdit={props.showEdit}
         editUser={props.editUser}
-        handleSubmit={props.handleSubmit}  />
+        handleSubmit={props.handleSubmit}
+        selectedPersonsGroups={props.selectedPersonsGroups}  />
 
     </div> )}
 

@@ -19,6 +19,8 @@ const UserShow = (props) => {
           <h6> Street: {props.displayUser.street} </h6>
           <h6> Password: {props.displayUser.password} </h6>
 
+          <h6>Associated Groups: {props.selectedPersonsGroups} </h6>
+
 
           <button onClick={props.editUser}> Edit User</button>
 
