@@ -10,7 +10,7 @@ class UserListDetail extends React.Component{
 
     return (
 
-      <div>
+      <div style={{float: 'right'}}>
 
       { (this.props.showEdit === false) ?
 

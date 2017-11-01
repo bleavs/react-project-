@@ -10,7 +10,7 @@ class UserGroupListDetail extends React.Component{
 
     return (
 
-      <div>
+      <div style={{float: 'left'}}>
 
       { (this.props.shouldEditGroup === false) ?
 

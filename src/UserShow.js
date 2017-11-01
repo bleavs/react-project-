@@ -3,6 +3,7 @@ import React from 'react';
 const UserShow = (props) => {
   console.log(props)
 
+
   return (
     <div>
           <h6> Title: {props.displayUser.title} </h6>

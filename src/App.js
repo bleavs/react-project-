@@ -245,6 +245,8 @@ selectedGroup: userGroupDataa
 //
 //
 // />
+// let divLeftStyle = {float: 'left'};
+// let divRightStyle = {float: 'right'};
 
 
   render() {
@@ -259,6 +261,8 @@ selectedGroup: userGroupDataa
         </header>
 
           <div>
+
+
             <UserListContainer
               users={this.state.people}
               showUser={this.showUser}
@@ -267,6 +271,8 @@ selectedGroup: userGroupDataa
               editUser={this.editUser}
               handleSubmit={this.handleSubmit}
               selectedPersonsGroups={this.state.selectedPersonsGroups}  />
+
+
 
             <GroupListContainer
               groups={this.state.groups}
@@ -283,6 +289,7 @@ selectedGroup: userGroupDataa
 
 
             />
+        
 
 
           </div>

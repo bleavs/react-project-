@@ -7,7 +7,7 @@ const UserGroupSideList = (props) => {
   console.log(props.groups.map((group, index) => {
     return (group.last) }))
 
-  const divStyle = {float: 'right'};
+  const divStyle = {float: 'left'};
   const buttonStyle = {display: 'block'};
 
   // showUser = (e) => {
@@ -32,6 +32,7 @@ const UserGroupSideList = (props) => {
 
     return (
     <div style={divStyle}>
+      <h6> View Groups </h6>
 
       {groupnames}
     </div>

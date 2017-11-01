@@ -6,7 +6,7 @@ const UserSideList = (props) => {
   console.log(props.users.map((user, index) => {
     return (user.last) }))
 
-  const divStyle = {float: 'left'};
+  const divStyle = {float: 'right'};
   const buttonStyle = {display: 'block'};
 
   // showUser = (e) => {
@@ -32,6 +32,7 @@ const UserSideList = (props) => {
 
     return (
     <div style={divStyle}>
+      <h6>View Members of Grouper</h6>
 
       {usernames}
     </div>
